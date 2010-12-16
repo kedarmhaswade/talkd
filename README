@@ -14,4 +14,11 @@ sudo apt-get install sox libsox-dev libsox-fmt-mp3 so you could play mp3
 and ./saywhat.rb and hear your box pronounce the word as professionally
 as possible ;)
 
+Prerequisites:
+1. sudo apt-get install libxml2 libxml2-dev libxslt-dev (required by nokogiri)
+2. rvm gemset install nokogiri or gem install nokogiri
+3. sudo apt-get install sox libsox-fmt-mp3
+4. Make sure you are not muted ;)
+
+
 Enjoy.
