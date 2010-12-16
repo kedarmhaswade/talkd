@@ -15,6 +15,7 @@ class TFD < Dictionary
   end
 
   def lookup(word)
+    word.gsub!(/\s/, "+")
     meaning_file = initialize_files(word)[0]
     f = File.open(meaning_file)
     begin
@@ -34,6 +35,7 @@ class TFD < Dictionary
   end
 
   def talk(word)
+    word.gsub!(/\s/, "+")
     sound_file = initialize_files(word)[1]
     #system("sox --combine sequence #{sound_file} #{sound_file}.wav")
     system("play #{sound_file}")
