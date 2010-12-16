@@ -1,0 +1,17 @@
+If you are like me, you'd want to have a dictionary of English language that 
+"speaks". Fortunately, we have several of those on the web. Thanks to
+http://www.tfd.com, for example.
+
+The pain is, however, that you have to connect to them and go through the
+entire page, click on the speaker icon to listen to the pronunciation of
+the word.
+
+Wouldn't it be nice if you could do it on command line, i.e  you say:
+pronounce-the-word-whose-spelling-is <this>?
+
+Well, your wait is over. On your Linux box, just do:
+sudo apt-get install sox libsox-dev libsox-fmt-mp3 so you could play mp3
+and ./saywhat.rb and hear your box pronounce the word as professionally
+as possible ;)
+
+Enjoy.
