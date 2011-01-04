@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-#
+# The main driver script
 require_relative 'tfd'
 
 tfd = TFD.new

@@ -1,1 +1,8 @@
-rvm 1.9.2@talkd
+#!/usr/bin/env bash
+
+# Yes, I know, I am using global gemset, not a project specific one
+rvm --use 1.9.2-p136@global
+
+if [[ -s gkeys.gems ]] ; then
+    rvm gemset import gkeys.gems
+fi

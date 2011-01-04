@@ -5,15 +5,22 @@ require "erb"
 require_relative "dictionary"
 require "logger"
 
+# Implements the {Dictionary} behavior from The Free Dictionary.
 class TFD < Dictionary
 
   BASE_URL = "http://www.thefreedictionary.com"
 
+  # Initializes the state
   def initialize
     @dictionary = Hash.new
     @logger     = Logger.new(STDOUT)
   end
 
+  # Looks up the meaning of the word
+  # @param [word] String denoting the word to look up
+  # @return [meanings] An array of Strings that represent the meaning of the word
+  # @raise [Exception] When the meaning file can't be downloaded
+  # @see #extract_text
   def lookup(word)
     word.gsub!(/\s/, "+")
     meaning_file = initialize_files(word)[0]
@@ -26,13 +33,6 @@ class TFD < Dictionary
 
   end
 
-  def extract_text(f)
-    doc = Nokogiri::HTML(f)
-    nodes = doc.xpath("//div[@class='ds-list']") + doc.xpath("//div[@class='ds-single']")
-    texts = []
-    nodes.each {|node| texts << node.inner_text}
-    texts
-  end
 
   def talk(word)
     word.gsub!(/\s/, "+")
@@ -50,6 +50,14 @@ class TFD < Dictionary
   end
 
   private
+
+  def extract_text(f)
+    doc = Nokogiri::HTML(f)
+    nodes = doc.xpath("//div[@class='ds-list']") + doc.xpath("//div[@class='ds-single']")
+    texts = []
+    nodes.each {|node| texts << node.inner_text}
+    texts
+  end
 
   def initialize_files(word)
     word_files = @dictionary[word] #an array of two elements
