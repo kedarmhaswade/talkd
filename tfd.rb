@@ -38,7 +38,7 @@ class TFD < Dictionary
     word.gsub!(/\s/, "+")
     sound_file = initialize_files(word)[1]
     #system("sox --combine sequence #{sound_file} #{sound_file}.wav")
-    system("play #{sound_file}")
+    system("ffplay #{sound_file}")
   end
 
   def cleanup(word)
