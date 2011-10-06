@@ -37,8 +37,8 @@ class TFD < Dictionary
   def talk(word)
     word.gsub!(/\s/, "+")
     sound_file = initialize_files(word)[1]
-    #system("sox --combine sequence #{sound_file} #{sound_file}.wav")
-    system("ffplay #{sound_file}")
+    # system("sox --combine sequence #{sound_file} #{sound_file}.wav")
+    system("mpg123 -q #{sound_file}")
   end
 
   def cleanup(word)
